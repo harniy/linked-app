@@ -1,0 +1,18 @@
+.paginations ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paginations ul li {
+    margin: 0 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: 700;
+    color: #484848;
+}
+
+.pagination__active {
+    background-color: #38b0ff;
+    color: aliceblue !important;
+}

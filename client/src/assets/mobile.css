@@ -1,0 +1,53 @@
+@media screen and (max-width: 500px) {
+    .add_block {
+        position: fixed;
+        bottom: 50px;
+        z-index: 10;
+        right: 60px;
+        padding: 0 !important;
+    }
+    .app__block__header {
+        justify-content: center !important;
+    }
+    .search__block {
+        width: 100% !important;
+    }
+    .search {
+        justify-content: space-between !important;
+    }
+    input[name="search"] {
+        width: 60% !important;
+        margin: 0 !important;
+    }
+    .search_icon {
+        left: 10px !important;
+    }
+    .nav__block {
+        display: none;
+    }
+    .app__block {
+        width: 100% !important;
+    }
+    .user_link_block {
+        width: 45% !important;
+        margin: 20px 5px !important;
+        max-height: 305px !important;
+        min-height: 305px !important;
+
+    }
+    .add__modal {
+        position: fixed !important;
+    }
+    .app__section {
+        overflow-x: hidden;
+    }
+
+    .all_links {
+        padding: 0 !important;
+        width: 85% !important;
+    }
+    .login__block {
+        padding: 20px 60px !important;
+        width: 55% !important;
+    }
+}
