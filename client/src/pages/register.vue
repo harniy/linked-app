@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     register() {
-      fetch(`http://${this.getport}:2000/register`, {
+      fetch(`${this.getPort}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

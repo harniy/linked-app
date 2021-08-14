@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     createLink() {
-      fetch(`http://${this.getPort}:2000/addlink`, {
+      fetch(`${this.getPort}/addlink`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

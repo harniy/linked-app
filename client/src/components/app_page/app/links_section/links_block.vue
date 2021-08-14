@@ -99,7 +99,7 @@ export default {
   },
   methods: {
     getLinks() {
-      fetch(`http://${this.getPort}:2000/getLinks`, {
+      fetch(`${this.getPort}/getLinks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -119,7 +119,7 @@ export default {
       let link = data;
       let user = this.$store.getters.getUserInfo;
 
-      fetch(`http://${this.getPort}:2000/removeLink`, {
+      fetch(`${this.getPort}/removeLink`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

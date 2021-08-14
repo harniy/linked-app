@@ -103,7 +103,7 @@ export const store = new Vuex.Store({
       return state.isYoutubeBtn
     },
     getServerPort(state) {
-      return state.server ? '45.14.12.224' : 'localhost'
+      return state.server ? 'https://linked-app.ml/api/' : 'http://localhost:2000/'
     }
   }
 })

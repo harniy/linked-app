@@ -6,6 +6,7 @@ import Register from '../pages/register.vue'
 
 
 export default new VueRouter({
+  mode: 'history',
     routes: [
         { path: '/', 
         name: 'login',

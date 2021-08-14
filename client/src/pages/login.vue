@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     login() {
-      fetch(`http://${this.getPort}:2000/`, {
+      fetch(`${this.getPort}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -96,7 +96,7 @@ export default {
       }
     },
     getLinks() {
-      fetch(`http://${this.getPort}:2000/getLinks`, {
+      fetch(`${this.getPort}/getLinks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
