@@ -99,7 +99,7 @@ export default {
   },
   methods: {
     getLinks() {
-      fetch("http://localhost:2000/getLinks", {
+      fetch(`http://${this.getPort}:2000/getLinks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -119,7 +119,7 @@ export default {
       let link = data;
       let user = this.$store.getters.getUserInfo;
 
-      fetch("http://localhost:2000/removeLink", {
+      fetch(`http://${this.getPort}:2000/removeLink`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -183,8 +183,11 @@ export default {
       return this.$store.getters.getYoutubeMode;
     },
     youtubeBtn() {
-      return this.$store.getters.getYoutubeBtn
-    }
+      return this.$store.getters.getYoutubeBtn;
+    },
+    getPort() {
+      return this.$store.getters.getServerPort;
+    },
   },
   watch: {
     "$store.state.cookies": function () {

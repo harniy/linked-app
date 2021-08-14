@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     register() {
-      fetch("http://localhost:2000/register", {
+      fetch(`http://${this.getport}:2000/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -82,6 +82,11 @@ export default {
       this.$router.push({ name: 'app' })
     }
   },
+  computed: {
+    getPort() {
+      return this.$store.getters.getServerPort
+    }
+  }
 };
 </script>
 

@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
+    server: true,
     cookies: '',
     showModal: false,
     userInfo: {},
@@ -100,6 +101,9 @@ export const store = new Vuex.Store({
     },
     getYoutubeBtn(state) {
       return state.isYoutubeBtn
+    },
+    getServerPort(state) {
+      return state.server ? '45.14.12.224' : 'localhost'
     }
   }
 })

@@ -11,9 +11,15 @@
           <div class="link__description">
             <span>Category: </span>
             <div class="select__add">
-              <select name="select" ref="select" @change="getCategory" >
+              <select name="select" ref="select" @change="getCategory">
                 <option>----</option>
-                <option :value="cat" v-for="(cat, idx) of categoryList" :key="idx">{{cat}}</option>
+                <option
+                  :value="cat"
+                  v-for="(cat, idx) of categoryList"
+                  :key="idx"
+                >
+                  {{ cat }}
+                </option>
               </select>
               <p>or <span @click="isAddCategory = !isAddCategory">add</span></p>
               <div class="new__category__block" v-if="isAddCategory">
@@ -27,7 +33,7 @@
             <input type="text" name="link" required v-model="url" />
           </div>
         </div>
-        
+
         <div class="add__button">
           <button name="add">add</button>
         </div>
@@ -50,7 +56,7 @@ export default {
   },
   methods: {
     createLink() {
-      fetch("http://localhost:2000/addlink", {
+      fetch(`http://${this.getPort}:2000/addlink`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,10 +70,10 @@ export default {
             password: this.$store.getters.getUserInfo.password,
           },
         }),
-      }).then(()=>{
-        this.$store.dispatch("addModal")
-        this.$store.dispatch('reloadLinks', true)
-      } )
+      }).then(() => {
+        this.$store.dispatch("addModal");
+        this.$store.dispatch("reloadLinks", true);
+      });
     },
     closeModal(e) {
       let el = e.target.className;
@@ -87,28 +93,30 @@ export default {
 
         this.isAddCategory = false;
 
-        this.category = this.newCategory
+        this.category = this.newCategory;
       }
     },
     getCategory() {
-      this.category = this.$refs.select.value
-    }
+      this.category = this.$refs.select.value;
+    },
   },
   computed: {
     categoryList() {
-      return this.$store.getters.getUniqCategory
-    }
+      return this.$store.getters.getUniqCategory;
+    },
+    getPort() {
+      return this.$store.getters.getServerPort;
+    },
   },
   watch: {
     "$store.state.showModal": function () {
       this.isModal = this.$store.getters.getModal;
-      
-      this.name = ''
-      this.url = ''
-      this.category = ''
+
+      this.name = "";
+      this.url = "";
+      this.category = "";
     },
   },
-
 };
 </script>
 

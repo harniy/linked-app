@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     login() {
-      fetch("http://localhost:2000/", {
+      fetch(`http://${this.getPort}:2000/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -96,7 +96,7 @@ export default {
       }
     },
     getLinks() {
-      fetch("http://localhost:2000/getLinks", {
+      fetch(`http://${this.getPort}:2000/getLinks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -122,6 +122,11 @@ export default {
     getCookiesPassword() {
       const results = document.cookie.match(/password=(.+?)(;|$)/);
       return results[1];
+    },
+  },
+  computed: {
+    getPort() {
+      return this.$store.getters.getServerPort;
     },
   },
   mounted() {
