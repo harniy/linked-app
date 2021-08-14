@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     login() {
-      fetch("http://localhost:1010/", {
+      fetch("http://localhost:2000/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -96,7 +96,7 @@ export default {
       }
     },
     getLinks() {
-      fetch("http://localhost:1010/getLinks", {
+      fetch("http://localhost:2000/getLinks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

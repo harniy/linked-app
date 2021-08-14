@@ -99,7 +99,7 @@ export default {
   },
   methods: {
     getLinks() {
-      fetch("http://localhost:1010/getLinks", {
+      fetch("http://localhost:2000/getLinks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -119,7 +119,7 @@ export default {
       let link = data;
       let user = this.$store.getters.getUserInfo;
 
-      fetch("http://localhost:1010/removeLink", {
+      fetch("http://localhost:2000/removeLink", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

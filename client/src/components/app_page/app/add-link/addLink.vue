@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     createLink() {
-      fetch("http://localhost:1010/addlink", {
+      fetch("http://localhost:2000/addlink", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
