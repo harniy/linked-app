@@ -1,0 +1,14 @@
+.body__dark {
+    background: #262621;
+}
+.filter__block__dark {
+    background: #163e3e !important;
+}
+.nav__block__dark {
+    background: #2a2a2a;
+    box-shadow: -2px -1px 16px 0 #ffffff40;
+}
+.search__dark {
+    background: #374647 !important;
+    box-shadow: -1px 1px 5px 0px #ffffff82 !important;
+}

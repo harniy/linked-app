@@ -19,6 +19,7 @@ export default {
 
 
 <style>
+
 .app__block {
   width: 85%;
   height: 100%;

@@ -4,8 +4,26 @@
       <h3>Links</h3>
     </div>
     <div class="filters__section">
-      <span class="material-icons list__design" @click="listStyle">menu</span>
-      <span class="material-icons app__design" @click="appStyle">apps</span>
+      <div class="dark__mode" @click="isDarkmode = !isDarkmode">
+        <span class="material-icons" title="dark mode" v-if="!isDarkmode"
+          >brightness_2</span
+        >
+        <span class="material-icons dark__off" title="dark mode" v-else
+          >brightness_1</span
+        >
+      </div>
+      <span
+        class="material-icons list__design"
+        title="list style"
+        @click="listStyle"
+        >menu</span
+      >
+      <span
+        class="material-icons app__design"
+        title="app style"
+        @click="appStyle"
+        >apps</span
+      >
       <div class="filter_span">
         Filter:
         <span class="filter__name" @click="showFilter"
@@ -34,6 +52,7 @@ export default {
   data() {
     return {
       isFilter: false,
+      isDarkmode: false,
     };
   },
   methods: {
@@ -68,7 +87,29 @@ export default {
         el.classList.remove("hide");
       });
       /* hide youtube btn */
-      this.$store.dispatch('showYtbBtn', false)
+      this.$store.dispatch("showYtbBtn", false);
+    },
+    darkModeTheme() {
+      const body = document.querySelector("body");
+      const filter = document.querySelector(".links__block .filter__block");
+      const menu = document.querySelector(".nav__block");
+      const input = document.querySelector('input[name="search"]');
+      const btn = document.querySelector('button[name="search"]');
+
+
+      if (this.isDarkmode === true) {
+        body.classList.add("body__dark");
+        filter.classList.add("filter__block__dark");
+        menu.classList.add("nav__block__dark");
+        input.classList.add("search__dark");
+        btn.classList.add("search__dark");
+      } else {
+        body.classList.remove("body__dark");
+        filter.classList.remove("filter__block__dark");
+        menu.classList.remove("nav__block__dark");
+        input.classList.remove("search__dark");
+        btn.classList.remove("search__dark");
+      }
     },
   },
   computed: {
@@ -76,11 +117,25 @@ export default {
       return this.$store.getters.getUniqCategory;
     },
   },
+  watch: {
+    isDarkmode() {
+      localStorage.setItem("dark-mode", this.isDarkmode);
+      this.darkModeTheme();
+    },
+  },
+  mounted() {
+    if (localStorage.getItem("dark-mode")) {
+      if (localStorage.getItem("dark-mode") === "true") this.isDarkmode = true;
+    }
+    if (localStorage.getItem("dark-mode") === "false") this.isDarkmode = false;
+    this.darkModeTheme();
+  },
 };
 </script>
 
 
 <style>
+@import "../../../../assets/dark-mode.css";
 .filter__block {
   display: flex;
   justify-content: space-between;
@@ -154,5 +209,8 @@ export default {
 }
 .hide {
   display: none !important;
+}
+.dark__off {
+  color: #ffc37c;
 }
 </style>

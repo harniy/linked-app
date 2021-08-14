@@ -1,6 +1,8 @@
 <template>
   <div class="nav__block">
-    <slot name="title"></slot>
+    <div class="mobile__button" @click="showMobileMenu">
+      <p>menu</p>
+    </div>
     <div class="app__name">Linked-app</div>
     <div class="nav__menu">
       <ul ref="navList">
@@ -17,9 +19,7 @@
         >
           <div class="category__list">
             <ul>
-              <li @click="filterList('all')">
-                all
-              </li>
+              <li @click="filterList('all')">all</li>
               <li
                 v-for="category in categories"
                 :key="category"
@@ -59,42 +59,45 @@ export default {
   data() {
     return {
       isCategory: false,
+      isMobile: false
     };
   },
   methods: {
     filterYoutube() {
-      let elements = document.querySelectorAll('.user_link_block')
-      elements.forEach(el => {
-        if(![...el.classList].includes('youtube')) {
-          el.classList.add('hide')
+      let elements = document.querySelectorAll(".user_link_block");
+      elements.forEach((el) => {
+        if (![...el.classList].includes("youtube")) {
+          el.classList.add("hide");
         }
-      })
+      });
 
-      this.$store.dispatch('showYtbBtn', true)
+      this.$store.dispatch("showYtbBtn", true);
     },
     showAll() {
-      let elements = document.querySelectorAll('.user_link_block')
+      let elements = document.querySelectorAll(".user_link_block");
       elements.forEach((el) => el.classList.remove("hide"));
-      this.$store.dispatch('showYtbBtn', false)
+      this.$store.dispatch("showYtbBtn", false);
     },
     filterList(filter) {
       const links = document.querySelectorAll(".user_link_block");
-  
+
       links.forEach((el) => {
-        if(filter === 'all') {
-          el.classList.remove('hide')
-          return
+        if (filter === "all") {
+          el.classList.remove("hide");
+          return;
         }
-        if(el.dataset.filter !== filter) {
-          el.classList.add('hide')
+        if (el.dataset.filter !== filter) {
+          el.classList.add("hide");
         } else {
-          el.classList.remove('hide')
+          el.classList.remove("hide");
         }
       });
       /* hide youtube btn */
-      this.$store.dispatch('showYtbBtn', false)
+      this.$store.dispatch("showYtbBtn", false);
     },
-
+    showMobileMenu() {
+      this.isMobile = !this.isMobile
+    },
   },
   mounted() {
     let nav_elements = this.$refs.navList.children;
@@ -123,7 +126,17 @@ export default {
       return this.$store.getters.getUniqCategory;
     },
   },
-  watch: {},
+  watch: {
+    isMobile() {
+      const menu = document.querySelector('.nav__menu')
+      if(this.isMobile === true) {
+        menu.style.left = 0
+      }
+      if(this.isMobile === false) {
+        menu.style.left = '-180px'
+      }
+    }
+  },
 };
 </script>
 
@@ -212,4 +225,7 @@ ul {
   }
 }
 
+.mobile__button {
+  display: none;
+}
 </style>
