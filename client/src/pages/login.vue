@@ -148,7 +148,7 @@ export default {
 .login__page {
   background-image: url("../assets/bg-01.jpg");
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
