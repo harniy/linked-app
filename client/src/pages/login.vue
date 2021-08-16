@@ -112,8 +112,12 @@ export default {
         });
     },
     workWithCookies(data) {
-      document.cookie = `username=${data.username}`;
-      document.cookie = `password=${data.password}`;
+      let date = new Date();
+      date.setDate(date.getDate() + 7); // прибавляем один день
+      date = date.toUTCString();
+      console.log(date);
+      document.cookie = `username=${data.username}; expires=${date} `;
+      document.cookie = `password=${data.password}; expires=${date} `;
     },
     getCookiesUsername() {
       const results = document.cookie.match(/username=(.+?)(;|$)/);
